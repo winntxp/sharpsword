@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>欢迎使用 @ViewBag.Title @ViewBag.Version</title>
+    <style type="text/css">
+        a { text-decoration: none; outline: 0; cursor: pointer; color: #ffffff; font-weight: bold; font-family: wf_segoe-ui_light,"Segoe UI Light","Segoe WP Light",wf_segoe-ui_normal,"Segoe UI",Segoe,"Segoe WP",Tahoma,Verdana,Arial,sans-serif; }
+        a:hover { color: #ffffff; text-decoration: none; cursor: pointer; }
+    </style>
+
+    <script src="/GetResource?resourceName=jquery-1.9.1.min.js"></script>
+    <script src="/GetResource?resourceName=jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Script/jquery.messager.js?v=2016"></script>
+
+    <script type="text/javascript">
+             
+        $(function () {
+
+            $.connection.hub.logging = true;
+
+            var chat = $.connection.sharpSwordCommonHub;
+
+            chat.client.getNotification = function (message) {
+                //console.log(message);
+                $.messager.show(0, message, 1000);
+            };
+
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                console.log("connection ok. clientid:"+$.connection.hub.id);
+            });
+        });
+    </script>
+</head>
+<body style="font-family: 微软雅黑; margin: 0px;">
+    <div style="background: #323b88; margin: 0px; padding: 10px; height: 60px; line-height: 60px; color: #ffffff; display: inherit;">
+        <a href='@Url.Action("Index", "Api")' style="font-size: 46px;">
+            <img src="data:image/png;base64,@ViewBag.Logo" />
+            <label style="color: #fff; text-shadow: 0 1px 1px #000;">欢迎使用 @ViewBag.Title @ViewBag.Version</label>
+        </a>
+        <div style="float:right; font-size:36px;">
+            <a href='@Url.Action("Index", "Api")' style="color:red">Framework(点击我)→</a>
+        </div>
+    </div>
+    <div style="background: #f4f4f4; margin-top: 0px; display: inherit; padding: 10px;">
+        <pre style="line-height: 28px; font-size: 16px; font-family: 微软雅黑;">@Html.Raw(ViewBag.Readme)</pre>
+    </div>
+</body>
+</html>
+

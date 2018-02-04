@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\SharpSword\branches</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>10/23/2017 22:11:40</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>10/23/2017 22:11:40</publishTime>
+    </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>04/20/2017 19:20:48</publishTime>
+    </File>
+    <File Include="bin/Autofac.Extras.DynamicProxy.dll">
+      <publishTime>04/20/2017 19:21:27</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.Mvc.dll">
+      <publishTime>04/20/2017 19:40:42</publishTime>
+    </File>
+    <File Include="bin/Castle.Core.dll">
+      <publishTime>04/20/2017 19:21:23</publishTime>
+    </File>
+    <File Include="bin/Dapper.dll">
+      <publishTime>04/20/2017 19:38:20</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>04/20/2017 19:21:19</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>04/20/2017 19:21:16</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>04/20/2017 19:21:29</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/20/2017 19:20:50</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Bson.dll">
+      <publishTime>07/18/2017 19:39:42</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Driver.Core.dll">
+      <publishTime>07/18/2017 19:39:43</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Driver.dll">
+      <publishTime>07/18/2017 19:39:41</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/20/2017 19:20:48</publishTime>
+    </File>
+    <File Include="bin/Nito.AsyncEx.dll">
+      <publishTime>04/20/2017 19:19:42</publishTime>
+    </File>
+    <File Include="bin/Nito.AsyncEx.Enlightenment.dll">
+      <publishTime>04/20/2017 19:19:30</publishTime>
+    </File>
+    <File Include="bin/RabbitMQ.Client.dll">
+      <publishTime>08/16/2017 21:01:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>04/20/2017 19:20:21</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>04/20/2017 19:20:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>04/20/2017 19:20:20</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>04/20/2017 19:20:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>04/20/2017 19:20:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>04/20/2017 19:20:28</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>04/20/2017 19:20:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>04/20/2017 19:20:44</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>04/20/2017 19:20:21</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>04/20/2017 19:20:28</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>04/20/2017 19:20:28</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>04/20/2017 19:20:28</publishTime>
+    </File>
+    <File Include="bin/SharpSword.AccessRecorder.MongoDB.dll">
+      <publishTime>10/23/2017 22:03:44</publishTime>
+    </File>
+    <File Include="bin/SharpSword.Caching.Redis.StackExchange.dll">
+      <publishTime>10/23/2017 22:03:43</publishTime>
+    </File>
+    <File Include="bin/SharpSword.dll">
+      <publishTime>10/23/2017 22:03:42</publishTime>
+    </File>
+    <File Include="bin/SharpSword.Host.dll">
+      <publishTime>10/23/2017 22:11:36</publishTime>
+    </File>
+    <File Include="bin/SharpSword.Logging.Log4Net.dll">
+      <publishTime>10/23/2017 22:03:44</publishTime>
+    </File>
+    <File Include="bin/SharpSword.Mail.Smtp.dll">
+      <publishTime>10/23/2017 22:03:45</publishTime>
+    </File>
+    <File Include="bin/SharpSword.O2O.Services.dll">
+      <publishTime>10/23/2017 22:03:46</publishTime>
+    </File>
+    <File Include="bin/SharpSword.SdkBuilder.CSharp.dll">
+      <publishTime>10/23/2017 22:03:46</publishTime>
+    </File>
+    <File Include="bin/SharpSword.Tools.dll">
+      <publishTime>10/23/2017 22:03:45</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.dll">
+      <publishTime>04/20/2017 19:21:40</publishTime>
+    </File>
+    <File Include="bin/System.Collections.Immutable.dll">
+      <publishTime>04/20/2017 19:40:48</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>05/07/2013 13:09:16</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>04/20/2017 20:18:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/20/2017 19:21:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/20/2017 19:37:07</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/20/2017 19:19:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/20/2017 19:21:22</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/20/2017 19:21:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/20/2017 19:21:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/20/2017 19:21:00</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>04/20/2017 19:21:04</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>04/20/2017 19:36:59</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>04/20/2017 19:19:51</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>04/20/2017 19:21:22</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>04/20/2017 19:21:00</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>04/20/2017 19:21:04</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>04/20/2017 19:21:04</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/23/2017 18:46:53</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>10/23/2017 22:11:37</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>09/08/2017 20:00:23</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>08/23/2017 19:11:24</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/23/2017 00:05:15</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

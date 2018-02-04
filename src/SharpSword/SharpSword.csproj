@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43E01449-2168-43C9-ACCD-E2FA7234C14C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpSword</RootNamespace>
+    <AssemblyName>SharpSword</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\SharpSword.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy">
+      <HintPath>..\packages\Autofac.Extras.DynamicProxy.4.1.0\lib\net45\Autofac.Extras.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Core.3.2.2\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auditing\AuditedAttribute.cs" />
+    <Compile Include="Auditing\AuditInfo.cs" />
+    <Compile Include="Auditing\AuditingHelper.cs" />
+    <Compile Include="Auditing\AuditingInterceptor.cs" />
+    <Compile Include="Auditing\Commands\AuditingCommand.cs" />
+    <Compile Include="Auditing\GlobalConfigurationExcetions.cs" />
+    <Compile Include="Auditing\Installers\DependencyRegistar.cs" />
+    <Compile Include="Auditing\DisableAuditingAttribute.cs" />
+    <Compile Include="Auditing\IAuditInfoProvider.cs" />
+    <Compile Include="Auditing\AuditingConfiguration.cs" />
+    <Compile Include="Auditing\IAuditingStore.cs" />
+    <Compile Include="Auditing\NullAuditingStore.cs" />
+    <Compile Include="Auditing\NullAuditInfoProvider.cs" />
+    <Compile Include="Caching\CacheManagerBase.cs" />
+    <Compile Include="Caching\Commands\CacheCommand.cs" />
+    <Compile Include="Caching\Installers\DependencyRegistar.cs" />
+    <Compile Include="Commands\CommandContext.cs" />
+    <Compile Include="Commands\CommandDescriptor.cs" />
+    <Compile Include="Commands\CommandHandlerDescriptor.cs" />
+    <Compile Include="Commands\CommandHandlerDescriptorBuilder.cs" />
+    <Compile Include="Commands\CommandHelpAttribute.cs" />
+    <Compile Include="Commands\CommandModule.cs" />
+    <Compile Include="Commands\CommandNameAttribute.cs" />
+    <Compile Include="Commands\CommandParameters.cs" />
+    <Compile Include="Commands\CommandReturnCodes.cs" />
+    <Compile Include="Commands\DefaultCommandManager.cs" />
+    <Compile Include="Commands\CommandHandlerBase.cs" />
+    <Compile Include="Commands\Installers\DependencyRegistar.cs" />
+    <Compile Include="Commands\HelpCommand.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\ICommandManager.cs" />
+    <Compile Include="Commands\CommandSwitchAttribute.cs" />
+    <Compile Include="Commands\CommandSwitchesAttribute.cs" />
+    <Compile Include="Common\LBS.cs" />
+    <Compile Include="Common\WebHttpHelper.cs" />
+    <Compile Include="Common\ReflectionHelper.cs" />
+    <Compile Include="Configuration\ConfigurationVirtualPathType.cs" />
+    <Compile Include="Configuration\DefaultConfigurationReader.cs" />
+    <Compile Include="Configuration\FailReturnDefaultAttribute.cs" />
+    <Compile Include="Configuration\IConfigurationReader.cs" />
+    <Compile Include="Configuration\JsonConfig\IJsonConfiguration.cs" />
+    <Compile Include="Configuration\JsonConfig\JsonConfigSettingFactory.cs" />
+    <Compile Include="Configuration\ConfigurationVirtualPathAttribute.cs" />
+    <Compile Include="Configuration\RemoteConfig\RemoteConfigSettingFactory.cs" />
+    <Compile Include="Configuration\RemoteConfig\IRemoteConfiguration.cs" />
+    <Compile Include="Configuration\SettingFactoryBase.cs" />
+    <Compile Include="Configuration\WebConfig\IWebConfigConfiguration.cs" />
+    <Compile Include="Configuration\XmlConfig\IXmlConfiguration.cs" />
+    <Compile Include="Configuration\XmlConfig\XmlConfigSettingFactory.cs" />
+    <Compile Include="DataAnnotations\CompareType.cs" />
+    <Compile Include="Data\IDataTablePrefix.cs" />
+    <Compile Include="Data\IDbContext.cs" />
+    <Compile Include="Data\IDbContextExtensions.cs" />
+    <Compile Include="Data\IEnumerableExtensions.cs" />
+    <Compile Include="Data\Installers\DependencyRegistar.cs" />
+    <Compile Include="Dependency\IEnableClassInterceptor.cs" />
+    <Compile Include="Dependency\IEnableInterceptor.cs" />
+    <Compile Include="Dependency\IEnableInterfaceInterceptor.cs" />
+    <Compile Include="Dependency\Installers\DependencyRegistar1.cs" />
+    <Compile Include="Dependency\InterceptedByAttribute.cs" />
+    <Compile Include="Data\IDbContextFactoryExtensions.cs" />
+    <Compile Include="Data\ISqlTraceManager.cs" />
+    <Compile Include="Data\NullSqlTraceManager.cs" />
+    <Compile Include="Dependency\IShouldInitialize.cs" />
+    <Compile Include="DistributedLock\DependencyRegistar.cs" />
+    <Compile Include="DistributedLock\NullDistributedLockerManager.cs" />
+    <Compile Include="DistributedLock\IDistributedLockerManager.cs" />
+    <Compile Include="Domain\Entitys\Abstracts\DeletionAuditedOfTPrimaryKey.cs" />
+    <Compile Include="Domain\Entitys\Abstracts\CreationAuditedOfTPrimaryKey.cs" />
+    <Compile Include="Domain\Entitys\Abstracts\FullAuditedOfTPrimaryKey.cs" />
+    <Compile Include="Domain\Entitys\ICreationAudited.cs" />
+    <Compile Include="Domain\Entitys\IDeletionAudited.cs" />
+    <Compile Include="Domain\Entitys\IEntityOfTPrimaryKey.cs" />
+    <Compile Include="Domain\Entitys\IEntity.cs" />
+    <Compile Include="Domain\Entitys\IFullAudited.cs" />
+    <Compile Include="Domain\Entitys\IHasCreationTime.cs" />
+    <Compile Include="Domain\Entitys\IHasModificationTime.cs" />
+    <Compile Include="Domain\Entitys\IModificationAudited.cs" />
+    <Compile Include="Domain\Entitys\Abstracts\ModificationAuditedOfTPrimaryKey.cs" />
+    <Compile Include="Domain\Services\DisableValidationAttribute.cs" />
+    <Compile Include="Domain\Services\ISharpSwordServices.cs" />
+    <Compile Include="Domain\Services\SharpSwordServicesBase.cs" />
+    <Compile Include="Dependency\DependencyRegistarBase.cs" />
+    <Compile Include="Dependency\IIocResolver.cs" />
+    <Compile Include="Dependency\ISingletonDependency.cs" />
+    <Compile Include="Dependency\ITransientDependency.cs" />
+    <Compile Include="Dependency\IPerLifetimeDependency.cs" />
+    <Compile Include="Data\IDbContextFactory.cs" />
+    <Compile Include="Domain\Uow\CallContextCurrentUnitOfWorkProvider.cs" />
+    <Compile Include="Domain\Uow\DataFilters.cs" />
+    <Compile Include="Domain\Uow\ICurrentUnitOfWorkProvider.cs" />
+    <Compile Include="Domain\Uow\InnerUnitOfWorkCompleteHandle.cs" />
+    <Compile Include="Domain\Uow\IUnitOfWorkManager.cs" />
+    <Compile Include="Domain\Uow\UnitOfWorkInterceptor.cs" />
+    <Compile Include="Domain\Uow\UnitOfWorkManager.cs" />
+    <Compile Include="DtoValidator\IDtoValidatableExtensions.cs" />
+    <Compile Include="DtoValidator\Installers\DependencyRegistar.cs" />
+    <Compile Include="DtoValidator\IValidatable.cs" />
+    <Compile Include="Environments\Installers\DependencyRegistar.cs" />
+    <Compile Include="GlobalConfigurationExcetions.cs" />
+    <Compile Include="Events\EventHandlerExtensions.cs" />
+    <Compile Include="Extensions\ComparableExtensions.cs" />
+    <Compile Include="Extensions\DayOfWeekExtensions.cs" />
+    <Compile Include="Extensions\MemberInfoExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
+    <Compile Include="Fakes\FakeHttpContext.cs" />
+    <Compile Include="Fakes\FakeHttpRequest.cs" />
+    <Compile Include="Fakes\FakeHttpResponse.cs" />
+    <Compile Include="Fakes\FakeHttpSessionState.cs" />
+    <Compile Include="Fakes\FakeIdentity.cs" />
+    <Compile Include="Fakes\FakePrincipal.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="GuidGenerator\GuidGeneratorManager.cs" />
+    <Compile Include="GuidGenerator\IGuidGenerator.cs" />
+    <Compile Include="GuidGenerator\Impl\IrregularGuidGenerator.cs" />
+    <Compile Include="GuidGenerator\Impl\SequentialGuidGenerator.cs" />
+    <Compile Include="GuidGenerator\Installers\DependencyRegistar.cs" />
+    <Compile Include="Host\Commands\HostCommand.cs" />
+    <Compile Include="Host\RouteProvider.cs" />
+    <Compile Include="Localization\Commands\CultureCommand.cs" />
+    <Compile Include="Localization\DefaultLocalizedStringManager.cs" />
+    <None Include="Localization\Installers\DependencyRegistar.cs1" />
+    <Compile Include="Localization\Dictionaries\ILocalizationDictionary.cs" />
+    <Compile Include="Localization\Dictionaries\LocalizationDictionary.cs" />
+    <Compile Include="Localization\Dictionaries\TextString.cs" />
+    <Compile Include="Localization\Dictionaries\XmlLocalizationDictionary.cs" />
+    <Compile Include="Localization\Dictionaries\XmlNodeExtensions.cs" />
+    <Compile Include="Localization\Sources\DictionaryBasedLocalizationSource.cs" />
+    <Compile Include="Localization\Sources\IDictionaryBasedLocalizationSource.cs" />
+    <Compile Include="Localization\ILocalizedStringManager.cs" />
+    <Compile Include="Localization\ITextFormatter.cs" />
+    <None Include="Localization\Installers\LocalizationModule.cs1" />
+    <Compile Include="Localization\LocalizedString.cs" />
+    <Compile Include="Localization\NullLocalizer.cs" />
+    <Compile Include="Localization\DefaultTextFormatter.cs" />
+    <Compile Include="Localization\ILocalizationSourceList.cs" />
+    <Compile Include="Localization\LocalizationConfiguration.cs" />
+    <Compile Include="Localization\Sources\ILocalizationDictionaryProvider.cs" />
+    <Compile Include="Localization\Sources\ILocalizationManager.cs" />
+    <Compile Include="Localization\ILocalizationSource.cs" />
+    <Compile Include="Localization\LanguageInfo.cs" />
+    <Compile Include="Localization\Sources\LocalizationDictionaryInfo.cs" />
+    <Compile Include="Localization\Sources\LocalizationManager.cs" />
+    <Compile Include="Localization\LocalizationSourceExtensionInfo.cs" />
+    <Compile Include="Localization\LocalizationSourceList.cs" />
+    <Compile Include="Localization\Sources\NullLocalizationManager.cs" />
+    <Compile Include="Localization\Sources\NullLocalizationSource.cs" />
+    <Compile Include="Localization\Sources\Xml\XmlEmbeddedFileLocalizationDictionaryProvider.cs" />
+    <Compile Include="Localization\Sources\Xml\XmlFileLocalizationDictionaryProvider.cs" />
+    <Compile Include="Localization\GlobalConfigurationExcetions.cs" />
+    <Compile Include="Logging\Installers\DependencyRegistar.cs" />
+    <Compile Include="MQ\IMessageConsumer.cs" />
+    <Compile Include="MQ\IMessagePublisher.cs" />
+    <Compile Include="MQ\Impl\NullMQ.cs" />
+    <Compile Include="MQ\Installers\DependencyRegistar.cs" />
+    <Compile Include="Net\SMS\SendResult.cs" />
+    <Compile Include="Net\SMS\ResultStatus.cs" />
+    <Compile Include="Net\SMS\SMSSenderBase.cs" />
+    <Compile Include="Notifications\INotificationConfiguration.cs" />
+    <Compile Include="Notifications\INotificationDefinitionContext.cs" />
+    <Compile Include="Notifications\INotificationDefinitionManager.cs" />
+    <Compile Include="Notifications\Installers\DependencyRegistar.cs" />
+    <Compile Include="Notifications\IRealTimeNotifier.cs" />
+    <Compile Include="Notifications\Collections\ITypeList.cs" />
+    <Compile Include="Notifications\ObjectNotificationData.cs" />
+    <Compile Include="Notifications\MessageNotificationData.cs" />
+    <Compile Include="Notifications\NotificationConfiguration.cs" />
+    <Compile Include="Notifications\NotificationData.cs" />
+    <Compile Include="Notifications\NotificationDefinition.cs" />
+    <Compile Include="Notifications\NotificationDefinitionContext.cs" />
+    <Compile Include="Notifications\NotificationDefinitionManager.cs" />
+    <Compile Include="Notifications\NotificationDefinitionProvider.cs" />
+    <Compile Include="Notifications\NullRealTimeNotifier.cs" />
+    <Compile Include="Notifications\Collections\TypeList.cs" />
+    <Compile Include="Notifications\UserNotification.cs" />
+    <Compile Include="ObjectMapper\Installers\DependencyRegistar.cs" />
+    <Compile Include="ObjectMapper\ObjectMapManager.cs" />
+    <Compile Include="PreApplicationStartCode.cs" />
+    <Compile Include="RealTime\Installers\DependencyRegistar.cs" />
+    <Compile Include="RealTime\IOnlineClient.cs" />
+    <Compile Include="RealTime\IOnlineClientManager.cs" />
+    <Compile Include="RealTime\OnlineClient.cs" />
+    <Compile Include="RealTime\OnlineClientManager.cs" />
+    <Compile Include="RealTime\OnlineClientManagerExtensions.cs" />
+    <Compile Include="RequestDto\IRequiredPrimaryKey.cs" />
+    <Compile Include="RequestDto\ISearchRequestDto.cs" />
+    <Compile Include="RequestDto\IPageListRequestDto.cs" />
+    <Compile Include="RequestDto\ISortedRequestDto.cs" />
+    <Compile Include="RequestDto\PageListRequestDtoBaseWithSortBy.cs" />
+    <Compile Include="RequestDto\PageListRequestDtoBaseWithSearch.cs" />
+    <Compile Include="RequestDto\PageListRequestDtoBaseWithUserAndPrimaryKey.cs" />
+    <Compile Include="RequestDto\PageListRequestDtoBaseWithUserAndSearchKey.cs" />
+    <Compile Include="RequestDto\PageListRequestDtoBaseWithUserAndSortBy.cs" />
+    <Compile Include="RequestDto\PageListRequestDtoBaseWithUser.cs" />
+    <Compile Include="RequestDto\RequestDtoBaseWithUserAndPrimaryKey.cs" />
+    <Compile Include="RequestDto\RequestDtoBaseWithPrimaryKey.cs" />
+    <Compile Include="RequestDto\RequestDtoBaseWithUser.cs" />
+    <Compile Include="ResourceFinder\Installers\DependencyRegistar.cs" />
+    <Compile Include="ResourceFinder\Installers\StartUp.cs" />
+    <Compile Include="Routes\Installers\DependencyRegistar.cs" />
+    <Compile Include="Routes\Installers\RouteProvider.cs" />
+    <Compile Include="Domain\Services\DtoValidInterceptor.cs" />
+    <Compile Include="Domain\Uow\DependencyRegistar.cs" />
+    <Compile Include="Domain\Uow\IActiveUnitOfWork.cs" />
+    <Compile Include="Domain\Uow\IUnitOfWork.cs" />
+    <Compile Include="Domain\Uow\IUnitOfWorkCompleteHandle.cs" />
+    <Compile Include="Domain\Uow\NullUnitOfWork.cs" />
+    <Compile Include="Domain\Uow\UnitOfWorkAttribute.cs" />
+    <Compile Include="Domain\Uow\UnitOfWorkBase.cs" />
+    <Compile Include="Domain\Uow\UnitOfWorkFailedEventArgs.cs" />
+    <Compile Include="Domain\Uow\UnitOfWorkHelper.cs" />
+    <Compile Include="Domain\Uow\UnitOfWorkOptions.cs" />
+    <Compile Include="Routes\IRoutePublisher.cs" />
+    <Compile Include="Routes\RouteProviderBase.cs" />
+    <Compile Include="Runtime\Installers\DependencyRegistar.cs" />
+    <Compile Include="Runtime\SessionBase.cs" />
+    <Compile Include="Serializers\Installers\DependencyRegistar.cs" />
+    <Compile Include="Serializers\Json\JsonSerializerManager.cs" />
+    <Compile Include="StartUp\StartUpBase.cs" />
+    <Compile Include="Tasks\Installers\DependencyRegistar.cs" />
+    <Compile Include="Threading\AsyncHelper.cs" />
+    <Compile Include="Threading\InternalAsyncHelper.cs" />
+    <Compile Include="Timing\Clock.cs" />
+    <Compile Include="Timing\DateTimeRange.cs" />
+    <Compile Include="Timing\IClockProvider.cs" />
+    <Compile Include="Timing\IDateTimeRange.cs" />
+    <Compile Include="Timing\LocalClockProvider.cs" />
+    <Compile Include="Timing\UtcClockProvider.cs" />
+    <Compile Include="ViewEngine\Installers\DependencyRegistar.cs" />
+    <Compile Include="ViewEngine\IViewParameterCollection.cs" />
+    <Compile Include="ViewEngine\IViewParameterCollectionExtensions.cs" />
+    <Compile Include="ViewEngine\ViewEnginePageBase.cs" />
+    <Compile Include="WebApi\ActionConfig\ActionConfigCollection.cs" />
+    <Compile Include="WebApi\ActionConfig\ActionConfigCollectionExtensions.cs" />
+    <Compile Include="WebApi\ActionConfig\ActionConfigItem.cs" />
+    <Compile Include="WebApi\ActionConfig\ApiConfigManager.cs" />
+    <Compile Include="WebApi\ActionConfig\IActionConfigCollection.cs" />
+    <Compile Include="WebApi\Attributes\GZipCompressAttribute.cs" />
+    <Compile Include="WebApi\Attributes\ViewAttribute.cs" />
+    <Compile Include="WebApi\DefaultRequestDtoValidator.cs" />
+    <Compile Include="WebApi\GlobalConfigurationExcetions.cs" />
+    <Compile Include="WebApi\ActionFilters\GlobalActionFiltersCollection.cs" />
+    <Compile Include="WebApi\ActionFilters\GlobalActionFiltersManager.cs" />
+    <Compile Include="WebApi\ActionFilters\IGlobalActionFiltersCollection.cs" />
+    <Compile Include="WebApi\Actions\ErrorAction.cs" />
+    <Compile Include="WebApi\Actions\HelpAction.cs" />
+    <Compile Include="WebApi\Actions\IndexAction.cs" />
+    <Compile Include="WebApi\Actions\KeepAliveAction.cs" />
+    <Compile Include="WebApi\Actions\ServerTimeGetAction.cs" />
+    <Compile Include="WebApi\Actions\ServerTimeGetActionV10.cs" />
+    <Compile Include="WebApi\ApiConfiguration.cs" />
+    <Compile Include="WebApi\Commands\WebApiCommand.cs" />
+    <None Include="0.1.Doc\接口框架技术文档.pdf" />
+    <None Include="0.1.Doc\框架事件总线设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架参数配置设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架命令行设计及使用文档V1.0 .doc" />
+    <None Include="0.1.Doc\框架多语言设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架扩展模块设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架数据校验设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架服务注册设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架缓存设计及使用文档V1.0 .doc" />
+    <None Include="DistributedLock\Readme.md" />
+    <None Include="SharpSword 1.0.0.pdf" />
+    <Compile Include="WebApi\Attributes\DeflateCompressAttribute.cs" />
+    <Compile Include="DtoValidator\DtoValidatorManagerExtensions.cs" />
+    <Compile Include="WebApi\ActionFilterExtensions.cs" />
+    <Compile Include="WebApi\ActionFilterWrapper.cs" />
+    <Compile Include="AppStarter.cs" />
+    <Compile Include="PluginDescriptor.cs" />
+    <Compile Include="Plugins\PluginDescriptorBase.cs" />
+    <Compile Include="WebApi\Attributes\ActionGroupAttribute.cs" />
+    <Compile Include="WebApi\Attributes\ResponseFormatAttribute.cs" />
+    <Compile Include="Common\HttpContentType.cs" />
+    <Compile Include="Common\MimeTypes.cs" />
+    <Compile Include="Common\NullDisposable.cs" />
+    <Compile Include="Component\GenericListTypeConverter.cs" />
+    <Compile Include="Configuration\Installers\DependencyRegistar.cs" />
+    <Compile Include="Configuration\ISettingFactory.cs" />
+    <Compile Include="Configuration\DefaultSettingFactoryBuilder.cs" />
+    <Compile Include="Configuration\ISettingFactoryBuilder.cs" />
+    <Compile Include="Configuration\WebConfig\WebConfigSettingFactory.cs" />
+    <Compile Include="Configuration\WebConfig\ConfigurationSectionNameAttribute.cs" />
+    <Compile Include="WebApi\Attributes\UnloadCachekeysAttribute.cs" />
+    <Compile Include="WebApi\AuthenticationManager.cs" />
+    <Compile Include="WebApi\ActionContext.cs" />
+    <Compile Include="WebApi\ActionExecutedContext.cs" />
+    <Compile Include="WebApi\ActionExecutingContext.cs" />
+    <Compile Include="Caching\Impl\PerRequestCacheManager.cs" />
+    <Compile Include="Component\WriteLockDisposable.cs" />
+    <Compile Include="Configuration\ISetting.cs" />
+    <Compile Include="Configuration\Installers\SettingsSource.cs" />
+    <Compile Include="DataAnnotations\AbstractCompareAttribute.cs" />
+    <Compile Include="DataAnnotations\GreaterThanOrEqualAttribute.cs" />
+    <Compile Include="DataAnnotations\LessThanOrEqualAttribute.cs" />
+    <Compile Include="DataAnnotations\LessThanAttribute.cs" />
+    <Compile Include="DataAnnotations\GreaterThanAttribute.cs" />
+    <Compile Include="DataAnnotations\InAttribute.cs" />
+    <Compile Include="DataAnnotations\NotEmptyAttribute.cs" />
+    <Compile Include="DataAnnotations\NotEqualAttribute.cs" />
+    <Compile Include="Domain\Entitys\Entity.cs" />
+    <Compile Include="Domain\Entitys\EntityOfTPrimaryKey.cs" />
+    <Compile Include="Domain\Entitys\Extensions.cs" />
+    <Compile Include="Domain\Entitys\AggregateRoot.cs" />
+    <Compile Include="Domain\Entitys\IPagedList.cs" />
+    <Compile Include="Domain\Entitys\IPhysicallyDelete.cs" />
+    <Compile Include="Domain\Repositories\IRepository.cs" />
+    <Compile Include="Domain\Entitys\ISoftDelete.cs" />
+    <Compile Include="Data\ISqlFileExecutor.cs" />
+    <Compile Include="Domain\Entitys\PagedList.cs" />
+    <Compile Include="Domain\Repositories\RepositoryBase.cs" />
+    <Compile Include="Data\SqlUsedAttribute.cs" />
+    <Compile Include="Serializers\Json\DefaultJsonSerializer.cs" />
+    <Compile Include="ObjectMapper\DefaultObjectMapProvider.cs" />
+    <Compile Include="Events\Installers\DependencyRegistar.cs" />
+    <Compile Include="Events\Entitys\EntityEventHelper.cs" />
+    <Compile Include="Events\Entitys\EntityDeletedEventData.cs" />
+    <Compile Include="Events\Entitys\EntityEventData.cs" />
+    <Compile Include="Events\Entitys\EntityCreatedEventData.cs" />
+    <Compile Include="Events\Entitys\EntityUpdatedEventData.cs" />
+    <Compile Include="Events\Entitys\IEntityEventHelper.cs" />
+    <Compile Include="Events\Entitys\NullEntityChangedEventHelper.cs" />
+    <Compile Include="Events\EventBus.cs" />
+    <Compile Include="Events\EventData.cs" />
+    <Compile Include="Events\Exceptions\ExceptionEventData.cs" />
+    <Compile Include="Events\IEventHandlerFactory.cs" />
+    <Compile Include="Events\FactoryUnregistrar.cs" />
+    <Compile Include="Events\Factories\SingleInstanceHandlerFactory.cs" />
+    <Compile Include="Events\Factories\TransientEventHandlerFactory.cs" />
+    <Compile Include="Events\Factories\IocHandlerFactory.cs" />
+    <Compile Include="Events\Handlers\ActionEventHandler.cs" />
+    <Compile Include="Events\IEventHandler`1.cs" />
+    <Compile Include="Events\IEventBus.cs" />
+    <Compile Include="Events\IEventData.cs" />
+    <Compile Include="Events\IEventDataWithInheritableGenericArgument.cs" />
+    <Compile Include="Events\IEventHandler.cs" />
+    <Compile Include="Events\NullEventBus.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="WebApi\Host\ApiControllerBase.cs" />
+    <Compile Include="ResponseDto\PagerDataDto.cs" />
+    <Compile Include="WebApi\ApiAccessRecordPublisher.cs" />
+    <Compile Include="Plugins\PluginManager.cs" />
+    <Compile Include="WebApi\ApiVersion.cs" />
+    <Compile Include="WebApi\ActionDocResource\ActionDocResourceManager.cs" />
+    <Compile Include="WebApi\Attributes\AuthenticationBaseAttribute.cs" />
+    <Compile Include="WebApi\ActionBase.cs" />
+    <Compile Include="WebApi\ActionRequestValidatorResult.cs" />
+    <Compile Include="WebApi\Attributes\AllowAnonymousAttribute.cs" />
+    <Compile Include="WebApi\Attributes\ApiPrefixAttribute.cs" />
+    <Compile Include="WebApi\Attributes\DisableDataSignatureTransmissionAttribute.cs" />
+    <Compile Include="WebApi\Attributes\DisablePackageSdkAttribute.cs" />
+    <Compile Include="WebApi\Attributes\EnableRecordApiLogAttribute.cs" />
+    <Compile Include="Serializers\Binary\BinarySerialization.cs" />
+    <Compile Include="Common\RandomHelper.cs" />
+    <Compile Include="Common\HostHelper.cs" />
+    <Compile Include="WebApi\CurrentUserIdentity.cs" />
+    <Compile Include="DataAnnotations\NotNullAttribute.cs" />
+    <Compile Include="WebApi\ActionRequestValidatorManager.cs" />
+    <Compile Include="WebApi\DefaultApiSecurity.cs" />
+    <Compile Include="WebApi\ApiSecurityManager.cs" />
+    <Compile Include="WebApi\DefaultRequestParamsBinder.cs" />
+    <Compile Include="WebApi\ActionRequestHanderActionResult.cs" />
+    <Compile Include="Host\ControllerBase.cs" />
+    <Compile Include="WebApi\IApiAccessRecordPublisher.cs" />
+    <Compile Include="WebApi\Tasks\KeepAliveTask.cs" />
+    <Compile Include="Host\MvcControllerBase.cs" />
+    <Compile Include="WebApi\IActionFilter.cs" />
+    <Compile Include="WebApi\IActionRequestHander.cs" />
+    <Compile Include="WebApi\IAsyncAction.cs" />
+    <Compile Include="Serializers\Json\IJsonSerializer.cs" />
+    <Compile Include="Environments\DefaultMachineNameProvider.cs" />
+    <Compile Include="Dependency\IDependency.cs" />
+    <Compile Include="Environments\IMachineNameProvider.cs" />
+    <Compile Include="Common\NamedList.cs" />
+    <Compile Include="ObjectMapper\IObjectMapProvider.cs" />
+    <Compile Include="WebApi\Installers\DependencyRegistar.cs" />
+    <Compile Include="WebApi\IRequestDtoValidator.cs" />
+    <Compile Include="WebApi\IRequestParamsBinder.cs" />
+    <Compile Include="StartUp\IStartUp.cs" />
+    <Compile Include="Logging\ILogger`1.cs" />
+    <Compile Include="Logging\NullLogger`1.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\IMediaTypeFormatterExtensions.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\MediaTypeFormatterMappingManager.cs" />
+    <Compile Include="Net\Mail\DependencyRegistar.cs" />
+    <Compile Include="Net\Mail\EmailSenderBase.cs" />
+    <Compile Include="Net\Mail\IEmailSender.cs" />
+    <Compile Include="Net\Mail\NullEmailSenderConfiguration.cs" />
+    <Compile Include="Net\Mail\IEmailSenderConfiguration.cs" />
+    <Compile Include="Net\Mail\NullEmailSender.cs" />
+    <Compile Include="Net\SMS\DependencyRegistar.cs" />
+    <Compile Include="Net\SMS\ISMSSender.cs" />
+    <Compile Include="Net\SMS\NullSMSSender.cs" />
+    <Compile Include="DtoValidator\IDtoValidator.cs" />
+    <Compile Include="DtoValidator\IDtoValidatorManager.cs" />
+    <Compile Include="DtoValidator\Impl\DefaultDtoValidatorManager.cs" />
+    <Compile Include="WebApi\Attributes\RouteAttribute.cs" />
+    <Compile Include="Runtime\ISession.cs" />
+    <Compile Include="Runtime\NullSession.cs" />
+    <Compile Include="Runtime\SessionExtensions.cs" />
+    <Compile Include="WebApi\SDKBuilder\ComplexObjTypeDescriptor.cs" />
+    <Compile Include="WebApi\SDKBuilder\DefaultValueItemConfig.cs" />
+    <Compile Include="WebApi\SDKBuilder\IApiDocBuilder.cs" />
+    <Compile Include="WebApi\SDKBuilder\SdkCodeGeneratorBase.cs" />
+    <Compile Include="WebApi\SDKBuilder\DefaultIApiDocBuilder.cs" />
+    <Compile Include="StartUp\StartUpManager.cs" />
+    <Compile Include="ResourceFinder\Impl\DefaultResourceFinderManager.cs" />
+    <Compile Include="ResourceFinder\IResourceFinderManager.cs" />
+    <None Include="Domain\Services\RegistrationSource.csx" />
+    <Compile Include="SharpSwordConsts.cs" />
+    <Compile Include="WebApi\ValueProviders\IValueProvidersManager.cs" />
+    <Compile Include="WebApi\ValueProviders\DefaultValueProvidersManager.cs" />
+    <Compile Include="Tasks\Impl\DefaultTaskSchedulerDistributedLocker.cs" />
+    <Compile Include="Tasks\ITaskSchedulerDistributedLocker.cs" />
+    <Compile Include="Tasks\ITaskSchedulerRegistar.cs" />
+    <Compile Include="Tasks\TaskExecuteContext.cs" />
+    <Compile Include="Tasks\TaskSchedulerAttribute.cs" />
+    <Compile Include="Tasks\TaskSchedulerCollectionExtensions.cs" />
+    <Compile Include="Tasks\TaskSchedulerManager.cs" />
+    <Compile Include="Tasks\IBackgroundTask.cs" />
+    <Compile Include="Tasks\TaskSchedulerCollection.cs" />
+    <Compile Include="Tasks\ITaskSchedulerCollection.cs" />
+    <Compile Include="Tasks\TaskScheduler.cs" />
+    <Compile Include="Tasks\BackgroundTask.cs" />
+    <Compile Include="Tasks\TaskThreadManager.cs" />
+    <Compile Include="WebApi\Tasks\TaskSchedulerRegistar.cs" />
+    <Compile Include="Tasks\TaskThread.cs" />
+    <Compile Include="WebApi\ValueProviders\IValueProvidersManagerExtensions.cs" />
+    <Compile Include="WebApi\ValueProviders\ValueProviderBase.cs" />
+    <Compile Include="ViewEngine\Impl\DefaultViewEngineManager.cs" />
+    <Compile Include="ViewEngine\IViewEngine.cs" />
+    <Compile Include="ViewEngine\IViewEngineExtensions.cs" />
+    <Compile Include="ViewEngine\IViewEngineManager.cs" />
+    <Compile Include="ViewEngine\IViewEngineManagerExtensions.cs" />
+    <Compile Include="ResourceFinder\Impl\EmbeddedFileResourceFinder.cs" />
+    <Compile Include="Extensions\ArrayExtensions.cs" />
+    <Compile Include="Extensions\HttpResponseBaseExtensions.cs" />
+    <Compile Include="Extensions\IDictionaryExtensions.cs" />
+    <Compile Include="Extensions\IListExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="WebApi\Host\ApiController.cs" />
+    <Compile Include="Host\ResourceController.cs" />
+    <Compile Include="WebApi\Host\RouteProvider.cs" />
+    <Compile Include="WebApi\Attributes\ActionRequestValidatorAttribute.cs" />
+    <Compile Include="Plugins\IPluginDescriptor.cs" />
+    <Compile Include="WebApi\IApiSecurity.cs" />
+    <Compile Include="ResourceFinder\IResourceFinder.cs" />
+    <Compile Include="WebApi\IRequestDtoBinder.cs" />
+    <Compile Include="WebApi\ValueProviders\ValueProviderExtensions.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ILoggerExtensions.cs" />
+    <Compile Include="Logging\ILoggerFactory.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\NullLogger.cs" />
+    <Compile Include="Logging\NullLoggerFactory.cs" />
+    <Compile Include="WebApi\DefaultRequestDtoBinder.cs" />
+    <Compile Include="RequestDto\PageListRequestDtoBase.cs" />
+    <Compile Include="DtoValidator\DtoValidatorResult.cs" />
+    <Compile Include="Resource\CoreResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Routes\IRouteProvider.cs" />
+    <Compile Include="Routes\RoutePublisher.cs" />
+    <Compile Include="WebApi\SDKBuilder\AndroidSdkCodeGenerator.cs" />
+    <Compile Include="WebApi\SDKBuilder\CodeGeneratorBase.cs" />
+    <Compile Include="WebApi\SDKBuilder\DefaultCodeGeneratorFactory.cs" />
+    <Compile Include="WebApi\SDKBuilder\CSharpSdkCodeGenerator.cs" />
+    <Compile Include="WebApi\SDKBuilder\ISdkCodeGeneratorFactory.cs" />
+    <Compile Include="Security\Base32.cs" />
+    <Compile Include="Security\Base64.cs" />
+    <Compile Include="Security\DES3.cs" />
+    <Compile Include="Security\DES.cs" />
+    <Compile Include="DynamicCompiled\DynamicCompiledDependencyRegistarManager.cs" />
+    <Compile Include="Enum\EnumDescriptor.cs" />
+    <Compile Include="WebApi\IActionDescriptor.cs" />
+    <Compile Include="DynamicCompiled\IDynamicCompiledDependencyRegistar.cs" />
+    <Compile Include="Localization\Localizer.cs" />
+    <Compile Include="WebApi\ReflectedActionDescriptor.cs" />
+    <Compile Include="WebApi\IActionDescriptorExtensions.cs" />
+    <Compile Include="WebApi\ActionDescriptor.cs" />
+    <Compile Include="WebApi\Attributes\ActionFilterBaseAttribute.cs" />
+    <Compile Include="WebApi\ActionDocResource\DllXmlDocAssembly.cs" />
+    <Compile Include="WebApi\ActionDocResource\DllXmlDoc.cs" />
+    <Compile Include="WebApi\ActionDocResource\DllXmlDocMember.cs" />
+    <Compile Include="Extensions\AnonymousObjectExtensions.cs" />
+    <Compile Include="WebApi\ApiAccessRecorderArgs.cs" />
+    <Compile Include="WebApi\ActionDocResource\DllXmlDocMethodParam.cs" />
+    <Compile Include="WebApi\Attributes\ResultCacheAttribute.cs" />
+    <Compile Include="WebApi\Attributes\AuthorAttribute.cs" />
+    <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Caching\CacheManagerExtensions.cs" />
+    <Compile Include="Caching\Impl\MemoryCacheManager.cs" />
+    <Compile Include="Caching\NullCacheManager.cs" />
+    <Compile Include="WebApi\RequestParams.cs" />
+    <Compile Include="WebApi\Attributes\EnableAjaxRequestAttribute.cs" />
+    <Compile Include="Extensions\HttpRequestBaseExtensions.cs" />
+    <Compile Include="RequestDto\IRequiredUser.cs" />
+    <Compile Include="DtoValidator\IDtoValidatable.cs" />
+    <Compile Include="Localization\Obsoletes\LanguageResourceManager.cs" />
+    <Compile Include="Localization\Obsoletes\LanguageResource.cs" />
+    <Compile Include="Localization\Obsoletes\LanguageResourceAction.cs" />
+    <Compile Include="Localization\Obsoletes\LanguageResourceActionItem.cs" />
+    <Compile Include="Localization\Obsoletes\LanguageResourceExtensions.cs" />
+    <Compile Include="DtoValidator\DtoValidatorResultError.cs" />
+    <Compile Include="Security\RSA.cs" />
+    <Compile Include="Security\MD5.cs" />
+    <Compile Include="GuidGenerator\Impl\UuidGuidGenerator.cs" />
+    <Compile Include="Common\Singleton.cs" />
+    <Compile Include="DtoValidator\Impl\DefaultDtoValidator.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\Impl\ViewMediaTypeFormatter.cs" />
+    <Compile Include="Common\SeparatorStringParse.cs" />
+    <Compile Include="Configuration\WebConfig\ConfigurationSectionManager.cs" />
+    <Compile Include="Configuration\WebConfig\ConfigurationSectionHandlerBase.cs" />
+    <Compile Include="WebApi\DefaultActionInvoker.cs" />
+    <Compile Include="WebApi\Attributes\ActionNameAttribute.cs" />
+    <Compile Include="WebApi\ActionRequestHander.cs" />
+    <Compile Include="WebApi\ActionResult.cs" />
+    <Compile Include="WebApi\ActionResultExtensions.cs" />
+    <Compile Include="WebApi\ActionResultFlag.cs" />
+    <Compile Include="WebApi\DefaultActionActivator.cs" />
+    <Compile Include="WebApi\DefaultActionFactory.cs" />
+    <Compile Include="WebApi\DefaultActionSelector.cs" />
+    <Compile Include="WebApi\DefaultApiAccessRecorder.cs" />
+    <Compile Include="WebApi\DefaultAuthentication.cs" />
+    <Compile Include="WebApi\ValueProviders\Impl\DefaultModelBinder.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\DefaultMediaTypeFormatterFactory.cs" />
+    <Compile Include="Dependency\Installers\DependencyRegistar.cs" />
+    <Compile Include="Enum\Enum`1.cs" />
+    <Compile Include="WebApi\ValueProviders\Impl\FormValueProvider.cs" />
+    <Compile Include="Exceptions\SharpSwordCoreException.cs" />
+    <Compile Include="HttpMethod.cs" />
+    <Compile Include="WebApi\Attributes\HttpMethodAttribute.cs" />
+    <Compile Include="WebApi\Attributes\RequireHttpsAttribute.cs" />
+    <Compile Include="WebApi\IAction.cs" />
+    <Compile Include="WebApi\IActionExtensions.cs" />
+    <Compile Include="WebApi\IActionActivator.cs" />
+    <Compile Include="WebApi\IActionFactory.cs" />
+    <Compile Include="WebApi\IActionInvoker.cs" />
+    <Compile Include="WebApi\IActionSelector.cs" />
+    <Compile Include="WebApi\IApiAccessRecorder.cs" />
+    <Compile Include="WebApi\IAuthentication.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\IMediaTypeFormatter.cs" />
+    <Compile Include="RequestDto\IRequestDto.cs" />
+    <Compile Include="WebApi\ValueProviders\IModelBinder.cs" />
+    <Compile Include="WebApi\IResponse.cs" />
+    <Compile Include="ResponseDto\IResponseDto.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\IMediaTypeFormatterFactory.cs" />
+    <Compile Include="WebApi\ValueProviders\IValueProvider.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\Impl\JsonMediaTypeFormatter.cs" />
+    <Compile Include="RequestDto\RequestDtoBase.cs" />
+    <Compile Include="ResponseDto\ResponseDtoBase.cs" />
+    <Compile Include="GlobalConfiguration.cs" />
+    <Compile Include="TypeFinder\Impl\AppDomainTypeFinder.cs" />
+    <Compile Include="Dependency\IDependencyRegistar.cs" />
+    <Compile Include="TypeFinder\ITypeFinder.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="WebApi\ValueProviders\Impl\RouteDataValueProvider.cs" />
+    <Compile Include="ViewEngine\Impl\DefaultViewEngine.cs" />
+    <Compile Include="ViewEngine\Impl\DirectiveValues.cs" />
+    <Compile Include="ViewEngine\Impl\IncludeParser.cs" />
+    <Compile Include="ViewEngine\Impl\Language.cs" />
+    <Compile Include="ViewEngine\Impl\Section.cs" />
+    <Compile Include="ViewEngine\Impl\SectionCollection.cs" />
+    <Compile Include="ViewEngine\Impl\SectionType.cs" />
+    <Compile Include="ViewEngine\ViewParameter.cs" />
+    <Compile Include="ViewEngine\ViewParameterCollection.cs" />
+    <Compile Include="ViewEngine\Impl\ViewParser.cs" />
+    <Compile Include="ResourceFinder\Impl\LocalFileViewResourceFinder.cs" />
+    <Compile Include="ResourceFinder\ResourceFinderBase.cs" />
+    <Compile Include="TypeFinder\Impl\WebAppTypeFinder.cs" />
+    <Compile Include="RequestDto\NullRequestDto.cs" />
+    <Compile Include="ResponseDto\NullResponseDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApi\ValueProviders\Impl\QueryStringValueProvider.cs" />
+    <Compile Include="WebApi\RequestContext.cs" />
+    <Compile Include="WebApi\DefaultResponse.cs" />
+    <Compile Include="WebApi\ResponseFormat.cs" />
+    <Compile Include="WebApi\ValueProviders\Impl\ServerVariablesValueProvider.cs" />
+    <Compile Include="Dependency\ServicesContainer.cs" />
+    <Compile Include="Common\SignParamsDictionary.cs" />
+    <Compile Include="WebApi\ActionTypeExtensions.cs" />
+    <Compile Include="WebApi\Attributes\VersionAttribute.cs" />
+    <Compile Include="Serializers\Xml\DefaultXmlSerializer.cs" />
+    <Compile Include="WebApi\MediaTypeFormatters\Impl\XmlMediaTypeFormatter.cs" />
+    <Compile Include="RequestDto\IRequestDtoExtensions.cs" />
+    <Compile Include="ResourceFinder\ResourceType.cs" />
+    <Compile Include="WebApi\WhiteIpManager\WhiteIpCollection.cs" />
+    <Compile Include="WebApi\WhiteIpManager\WhiteIpManager.cs" />
+    <None Include="0.1.Doc\接口框架技术文档.doc" />
+    <None Include="0.1.Doc\接口框架异常排除文档.doc" />
+    <None Include="0.1.Doc\框架作业任务设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架数据访问设计及使用文档V1.0.doc" />
+    <None Include="0.1.Doc\框架日志组件设计及使用文档V1.0.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\autocomplete\jquery.autocomplete.css" />
+    <EmbeddedResource Include="Resource\System.png" />
+    <EmbeddedResource Include="Resource\autocomplete\jquery.autocomplete.js" />
+    <EmbeddedResource Include="Resource\jquery-1.9.1.min.js" />
+    <EmbeddedResource Include="Resource\buttons.css" />
+    <EmbeddedResource Include="WebApi\Views\Api.Index.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\CoreResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebApi\Views\T.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SharpSword.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\XmlSource\SharpSword.xml" />
+    <EmbeddedResource Include="Localization\XmlSource\SharpSword-en.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WebApi\Views\Api.Index .caspx" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WebApi\WEBAPI接口规范.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

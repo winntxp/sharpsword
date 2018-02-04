@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6F1FBC3-0407-4633-AED5-D400EDEBD621}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpSword.SdkBuilder.CSharp</RootNamespace>
+    <AssemblyName>SharpSword.SdkBuilder.CSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionConfigCollectionExtensions.cs" />
+    <Compile Include="Actions\ApiDescriptorAction.cs" />
+    <Compile Include="Actions\ApiDocAction.cs" />
+    <Compile Include="Actions\ApiDocBuilderAction.cs" />
+    <Compile Include="Actions\BuildSdkAction.cs" />
+    <Compile Include="GlobalConfigurationExcetions.cs" />
+    <Compile Include="SdkBuilderConfig.cs" />
+    <Compile Include="PluginDescriptor.cs" />
+    <Compile Include="DependencyRegistar.cs" />
+    <Compile Include="Host\RouteProvider.cs" />
+    <Compile Include="Host\SdkBuilderCSharpController.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\BZip2\BZip2.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\BZip2\BZip2Constants.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\BZip2\BZip2Exception.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\BZip2\BZip2InputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\BZip2\BZip2OutputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Checksums\Adler32.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Checksums\BZip2Crc.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Checksums\Crc32.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Checksums\IChecksum.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\CompressionLevel.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\CompressionMode.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Core\FileSystemScanner.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Core\INameTransform.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Core\IScanFilter.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Core\NameFilter.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Core\PathFilter.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Core\StreamUtils.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Core\WindowsPathUtils.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Encryption\PkzipClassic.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Encryption\ZipAESStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Encryption\ZipAESTransform.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\GZip\GZipConstants.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\GZip\GZipException.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\GZip\GzipInputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\GZip\GzipOutputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Lzw\LzwConstants.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Lzw\LzwException.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Lzw\LzwInputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\SharpZipBaseException.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\InvalidHeaderException.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\TarArchive.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\TarBuffer.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\TarEntry.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\TarException.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\TarHeader.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\TarInputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Tar\TarOutputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\ZipArchiveMode.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\Deflater.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\DeflaterConstants.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\DeflaterEngine.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\DeflaterHuffman.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\DeflaterPending.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\Inflater.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\InflaterDynHeader.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\InflaterHuffmanTree.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\PendingBuffer.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\Streams\DeflaterOutputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\Streams\InflaterInputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\Streams\OutputWindow.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\Compression\Streams\StreamManipulator.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\FastZip.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\IEntryFactory.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\WindowsNameTransform.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipConstants.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipEntry.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipEntryFactory.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipException.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipExtraData.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipFile.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipHelperStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipInputStream.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipNameTransform.cs" />
+    <Compile Include="ICSharpCode.SharpZipLib\Zip\ZipOutputStream.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpSword\SharpSword.csproj">
+      <Project>{43e01449-2168-43c9-accd-e2fa7234c14c}</Project>
+      <Name>SharpSword</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\APIBuildSDK.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\APIDoc.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\poshytip\Images\tip-darkgray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\poshytip\Images\tip-darkgray_arrows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\poshytip\Images\tip-yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\poshytip\Images\tip-yellow_arrows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\poshytip\jquery.poshytip.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\poshytip\tip-darkgray.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\poshytip\tip-yellow.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Api.Descriptor.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

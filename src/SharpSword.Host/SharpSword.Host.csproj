@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2F53AF6F-2949-4BA4-A028-44B87939DD07}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpSword.Host</RootNamespace>
+    <AssemblyName>SharpSword.Host</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\SharpSword.Host.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Extras.DynamicProxy.4.1.0\lib\net45\Autofac.Extras.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.2.2\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=3.1.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework6.Npgsql.3.1.1\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.GNU.Classpath">
+      <HintPath>..\packages\PDFBox-0.7.3\bin\IKVM.GNU.Classpath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime">
+      <HintPath>..\packages\PDFBox-0.7.3\bin\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.9.7\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.7\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.1.2400\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpSword.Api.SDK, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Data\sdkdll\SharpSword.Api.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.PDF.3.9\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=3.9.0.2040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.PDF.3.9\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\packages\StackExchange.Redis.1.1.603\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectDescription.txt" />
+    <Content Include="App_Data\TextFile1.txt" />
+    <Content Include="Global.asax" />
+    <EmbeddedResource Include="Resource\Logo.png" />
+    <Content Include="Script\jquery.messager.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apis\AopAction.cs" />
+    <Compile Include="Apis\MallShopFeedBack.cs" />
+    <Compile Include="Apis\MSMQ.cs" />
+    <Compile Include="Apis\MyAPI.cs" />
+    <Compile Include="Apis\OrmTestAction.cs" />
+    <Compile Include="Apis\RedisLocker.cs" />
+    <Compile Include="Apis\SDKTest.cs" />
+    <Compile Include="Controllers\AliPayController.cs" />
+    <Compile Include="Controllers\WeiXinNotifyController.cs" />
+    <Compile Include="Controllers\OAuthController.cs" />
+    <Compile Include="Data\Domain\Address.cs" />
+    <Compile Include="Data\Domain\Shelf.cs" />
+    <Compile Include="Data\Domain\Warehouse.cs" />
+    <Compile Include="Data\LogSqlTraceManager.cs" />
+    <Compile Include="Data\Mapping\AddressMap.cs" />
+    <Compile Include="Data\Mapping\ShelfMap.cs" />
+    <Compile Include="Data\Mapping\WarehouseMap.cs" />
+    <Compile Include="Data\MvcAuditInfoProvider.cs" />
+    <Compile Include="Data\StartUp.cs" />
+    <Compile Include="Data\TestSession.cs" />
+    <Compile Include="Data\V20DbContext.cs" />
+    <Compile Include="DynamicWebConfig.cs" />
+    <Compile Include="App_Start\DependencyRegistar.cs" />
+    <Compile Include="App_Start\RouteProvider.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Services\ServicesModule.cs" />
+    <Compile Include="Tasks\TestTask.cs" />
+    <Compile Include="Services\TestService.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\TaskSchedulerRegistar.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\DependencyRegistar.cs" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SharpSword.AccessRecorder.MongoDB\2.1.SharpSword.AccessRecorder.MongoDB.csproj">
+      <Project>{09a5d92d-603d-4ab0-89bc-3f4b03e36c6d}</Project>
+      <Name>2.1.SharpSword.AccessRecorder.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.Auditing.MongoDB\3.1.SharpSword.Auditing.MongoDB.csproj">
+      <Project>{168b8bb6-36e1-4194-8f1f-678055965ba2}</Project>
+      <Name>3.1.SharpSword.Auditing.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.DistributedLock.Redis\6.0.SharpSword.DistributedLock.Redis.csproj">
+      <Project>{ba1c3876-c3a0-46c9-83b7-00ffdd79299f}</Project>
+      <Name>6.0.SharpSword.DistributedLock.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.Logging.Log4Net\2.3.SharpSword.Logging.Log4Net.csproj">
+      <Project>{24937e0e-b8cc-466c-97bd-5d4d04201cfb}</Project>
+      <Name>2.3.SharpSword.Logging.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.MQ.ActiveMQ\0.5.SharpSword.MQ.ActiveMQ.csproj">
+      <Project>{c5bdfb01-bcd6-481b-badd-e8ffd1d8ca27}</Project>
+      <Name>0.5.SharpSword.MQ.ActiveMQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.MQ.MSMQ\0.5.SharpSword.MQ.MSMQ.csproj">
+      <Project>{18cf7d22-00c0-474e-9d49-5cbe5a206d26}</Project>
+      <Name>0.5.SharpSword.MQ.MSMQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.MQ.RabbitMQ\0.5.SharpSword.MQ.RabbitMQ.csproj">
+      <Project>{a083dbb4-512b-4ed5-bc0b-d8813b8fe824}</Project>
+      <Name>0.5.SharpSword.MQ.RabbitMQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.SMS.Detault\0.5.SharpSword.SMS.Detault.csproj">
+      <Project>{144d706c-d9e2-4828-bee1-042d903d3be5}</Project>
+      <Name>0.5.SharpSword.SMS.Detault</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.Tools\1.3.SharpSword.Tools.csproj">
+      <Project>{6fe13611-8573-4955-96a1-e930b551334e}</Project>
+      <Name>1.3.SharpSword.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.CommandExecutor\1.5.SharpSword.CommandExecutor.csproj">
+      <Project>{d9d2c4ef-6952-475e-bc4b-d540d5fde660}</Project>
+      <Name>1.5.SharpSword.CommandExecutor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.DynamicApi\5.0.SharpSword.DynamicApi.csproj">
+      <Project>{ecfdd93a-69a1-4768-afab-f29e868814b8}</Project>
+      <Name>5.0.SharpSword.DynamicApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.FluentValidation\0.3.SharpSword.FluentValidation.csproj">
+      <Project>{1ae9fa27-5537-4905-a169-2cef7e28abc7}</Project>
+      <Name>0.3.SharpSword.FluentValidation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.Mail.Smtp\0.5.SharpSword.Mail.Smtp.csproj">
+      <Project>{a6efeb7b-cce6-4bea-a373-d63d01fd93bf}</Project>
+      <Name>0.5.SharpSword.Mail.Smtp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.EntityFramework\0.2.SharpSword.EntityFramework.csproj">
+      <Project>{7349070b-4347-4dd7-b491-0da766cec027}</Project>
+      <Name>0.2.SharpSword.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.OAuth\0.7.SharpSword.OAuth.csproj">
+      <Project>{8df6c925-d7f9-456f-9318-c95e6c598a27}</Project>
+      <Name>0.7.SharpSword.OAuth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.Pay\0.8.SharpSword.Pay.csproj">
+      <Project>{d5711226-1a65-453c-9e60-b686c452f0d9}</Project>
+      <Name>0.8.SharpSword.Pay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.SdkBuilder.CSharp\1.1.SharpSword.SdkBuilder.CSharp.csproj">
+      <Project>{d6f1fbc3-0407-4633-aed5-d400edebd621}</Project>
+      <Name>1.1.SharpSword.SdkBuilder.CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.SignalR\5.0.SharpSword.SignalR.csproj">
+      <Project>{773663d8-988c-4019-a9e9-e11bf6d26c87}</Project>
+      <Name>5.0.SharpSword.SignalR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.TaskManagement\1.4.SharpSword.TaskManagement.csproj">
+      <Project>{c8d94353-346c-4628-86e7-2c71820a8cc5}</Project>
+      <Name>1.4.SharpSword.TaskManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword\SharpSword.csproj">
+      <Project>{43e01449-2168-43c9-accd-e2fa7234c14c}</Project>
+      <Name>SharpSword</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpSword.DtoGenerator\1.0.SharpSword.DtoGenerator.csproj">
+      <Project>{fa1a6d69-9106-4dd4-82bb-4814be301640}</Project>
+      <Name>1.0.SharpSword.DtoGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1478</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9999</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

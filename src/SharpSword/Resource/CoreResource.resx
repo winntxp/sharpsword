@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionBase_ArgumentNullErrorActionResult_Info" xml:space="preserve">
+    <value>请求参数【{0}】未提交或未指定参数值</value>
+  </data>
+  <data name="ActionBase_GetRequestDto_DeserializeObject_Error" xml:space="preserve">
+    <value>执行:{0}.GetRequestDto()方法错误，请检查客户端上送的JSON数据包格式是否正确(比如必须传入的参数未传入或者数据类型错误)</value>
+  </data>
+  <data name="ActionBase_RequestDto_Null" xml:space="preserve">
+    <value>绑定上送业务参数失败，请检查上送Data参数JSON格式是否正确(1.JSON本身格式是否正确，2.参数的数据类型是否正确，3.请查看详细错误日志)</value>
+  </data>
+  <data name="ActionBase_RequiredUserIdAndUserName_Error" xml:space="preserve">
+    <value>此次操作需要提交操作用户ID(UserId)和用户名(UserName)，请确保上传的参数包(Data)有UserId和UserName参数</value>
+  </data>
+  <data name="ActionBase_ValidUserIdAndUserNameFun_Null_Error" xml:space="preserve">
+    <value>ValidUserIdAndUserNameFun未定义</value>
+  </data>
+  <data name="ActionConfigCollection_Add_Exists" xml:space="preserve">
+    <value>重复添加接口配置，接口名称：{0}</value>
+  </data>
+  <data name="ActionConfigCollection_Add_Version_NotNull" xml:space="preserve">
+    <value>版本号不能为空</value>
+  </data>
+  <data name="ActionRequestHanderActionResult_Error" xml:space="preserve">
+    <value>接口出现异常：错误描述：{0}，详情：{1}</value>
+  </data>
+  <data name="ActionRequestHander_AppKeyAuthentication" xml:space="preserve">
+    <value>全局(IAuthentication)校验未通过，系统拒绝访问</value>
+  </data>
+  <data name="ActionRequestHander_AppKeyAuthentication_Attribute" xml:space="preserve">
+    <value>接口校验失败</value>
+  </data>
+  <data name="ActionRequestHander_NotFoundAction" xml:space="preserve">
+    <value>未找到Action接口:{0}</value>
+  </data>
+  <data name="ActionRequestHander_WhiteIpRefuse" xml:space="preserve">
+    <value>接口系统设置了白名单，但是您的IP地址【{0}】不在白名单之列，系统拒绝访问</value>
+  </data>
+  <data name="Action_ActionNameIsNullOrString" xml:space="preserve">
+    <value>未提供接口名称</value>
+  </data>
+  <data name="DECRYPT_REQUEST_FAIL" xml:space="preserve">
+    <value>上送参数解密失败</value>
+  </data>
+  <data name="DefaultActionActivator_TypeError" xml:space="preserve">
+    <value>类型：{0}错误，ActionType必须继承ActionBase抽象类</value>
+  </data>
+  <data name="DefaultActionFactory_ActionNameIsNullOrString" xml:space="preserve">
+    <value>未提供接口名称</value>
+  </data>
+  <data name="DefaultActionFactory_ActionNameNotFound" xml:space="preserve">
+    <value>未找到Action接口:{0}</value>
+  </data>
+  <data name="DefaultActionInvoker_ActionExecuteError" xml:space="preserve">
+    <value>接口方法:{0} , 类型：{1}，执行Execute()方法错误，详细信息：{2}</value>
+  </data>
+  <data name="DefaultActionSelector_FoundMoreThenOneActionName" xml:space="preserve">
+    <value>加载接口错误，同名接口出现版本重复，请根据错误信息检查接口名称。接口名称：{0},接口类型：{1}，冲突接口类型：{2}，版本号：{3}</value>
+  </data>
+  <data name="DefaultActionValidator_EnableAjaxRequest" xml:space="preserve">
+    <value>Action:{0},类型：{1},系统不允许Ajax请求</value>
+  </data>
+  <data name="DefaultActionValidator_HttpMethod" xml:space="preserve">
+    <value>Action:{0}，类型：{1}，使用http请求方式错误，请使用：HTTP-{2}方式提交数据</value>
+  </data>
+  <data name="DefaultActionValidator_IsObsolete" xml:space="preserve">
+    <value>Action:{0}，类型：{1}，已经被注销，无法继续提供接口服务</value>
+  </data>
+  <data name="DefaultActionValidator_RequireHttps" xml:space="preserve">
+    <value>Action:{0}，类型：{1}，需要使用https连接进行请求</value>
+  </data>
+  <data name="DefaultViewEngineManager_IViewEngine_NotFound0" xml:space="preserve">
+    <value>未找到指定的视图引擎，视图引擎必须支持后缀:{0}</value>
+  </data>
+  <data name="DefaultViewEngineManager_IViewEngine_NotFound1" xml:space="preserve">
+    <value>未找到视图引擎，请最少注册一个实现IViewEngine的视图引擎</value>
+  </data>
+  <data name="ErrorAction_ErrInfo" xml:space="preserve">
+    <value>错误消息：{0}，详细异常：{1}</value>
+  </data>
+  <data name="GreaterThanAttribute_Error" xml:space="preserve">
+    <value>属性值必须大于：{0}</value>
+  </data>
+  <data name="GreaterThanOrEqualAttribute_Error" xml:space="preserve">
+    <value>属性值必须大于等于：{0}</value>
+  </data>
+  <data name="InAttribute_Error" xml:space="preserve">
+    <value>值取值范围为:{0}</value>
+  </data>
+  <data name="LessThanAttribute_Error" xml:space="preserve">
+    <value>属性值必须小于：{0}</value>
+  </data>
+  <data name="LessThanOrEqualAttribute_Error" xml:space="preserve">
+    <value>属性值必须小于等于：{0}</value>
+  </data>
+  <data name="NotEmptyAttribute_Error" xml:space="preserve">
+    <value>集合不能空</value>
+  </data>
+  <data name="NotEqualAttribute_Error" xml:space="preserve">
+    <value>值不能与属性{0}相等</value>
+  </data>
+  <data name="NotEqualAttribute_Exc" xml:space="preserve">
+    <value>属性:{0}未找到</value>
+  </data>
+  <data name="NotNullAttribute_Error" xml:space="preserve">
+    <value>{0} 字段是必需的</value>
+  </data>
+  <data name="ResponseFormatAttribute_ResponseFormat_Error" xml:space="preserve">
+    <value>接口：{0}，类型：{1}，输出方式错误，只允许使用：{2} 方式返回数据</value>
+  </data>
+  <data name="RoutePublisher_ForbiddenCharacter" xml:space="preserve">
+    <value>接口：{0} 特性路由不能包含{1}或者{2}字符</value>
+  </data>
+  <data name="RoutePublisher_RouteAdded" xml:space="preserve">
+    <value>已经添加了特性路由：{0}，当前接口：{1}({2})，冲突接口：{3}({4})</value>
+  </data>
+  <data name="View_Not_Exists" xml:space="preserve">
+    <value>未找到任何APi接口视图模板，已经搜索路径：{0}{1}</value>
+  </data>
+</root>

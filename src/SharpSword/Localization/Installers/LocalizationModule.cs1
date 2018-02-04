@@ -1,0 +1,81 @@
+﻿/* ****************************************************************
+ * SharpSword zhangliang@sharpsword.com.cn 11/22/2016 2:02:34 PM
+ * ****************************************************************/
+using Autofac;
+using Autofac.Core;
+using System;
+using System.Collections.Concurrent;
+using System.Reflection;
+using Module = Autofac.Module;
+
+namespace SharpSword.Localization.Installers
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class LocalizationModule : Module
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly ConcurrentDictionary<string, Localizer> _localizerCache;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public LocalizationModule()
+        {
+            this._localizerCache = new ConcurrentDictionary<string, Localizer>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="builder"></param>
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterType<DefaultTextFormatter>()
+                   .As<ITextFormatter>()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<DefaultLocalizedStringManager>()
+                   .As<ILocalizedStringManager>()
+                   .PropertiesAutowired()
+                   .InstancePerLifetimeScope();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="componentRegistry"></param>
+        /// <param name="registration"></param>
+        protected override void AttachToComponentRegistration(IComponentRegistry componentRegistry, IComponentRegistration registration)
+        {
+            var userProperty = FindProperty(registration.Activator.LimitType);
+            if (!userProperty.IsNull())
+            {
+                var scope = registration.Activator.LimitType.FullName;
+                registration.Activated += (sender, e) =>
+                {
+                    if (e.Instance.GetType().FullName != scope)
+                    {
+                        return;
+                    }
+                    var localizer = _localizerCache.GetOrAdd(scope, key => e.Context.Resolve<ITextFormatter>().Get);
+                    userProperty.SetValue(e.Instance, localizer, null);
+                };
+            }
+        }
+
+        /// <summary>
+        /// 区域本地化器，我们直接采取约定的方式，检测对象是否含有L属性并且返回类型为：Localizer，防止多次去循环检测属性
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private static PropertyInfo FindProperty(Type type)
+        {
+            return type.GetProperty("L", typeof(Localizer));
+        }
+    }
+}

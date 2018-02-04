@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="en">
+  <texts>
+    <text name="方法：{0} 执行参数校验开始">
+      <![CDATA[start：{0} valid dto]]>
+    </text>
+    <text name="SharpSword系统组件查看器，基于框架SharpSword">SharpSword system framework based on component viewer, SharpSword</text>
+  </texts>
+</localizationDictionary>

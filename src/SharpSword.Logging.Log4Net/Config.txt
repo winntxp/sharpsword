@@ -1,0 +1,96 @@
+﻿使用方法：
+1.接口HOST项目引用此项目
+2.接口HOST项目根目录下建立~/App_Data/log4net目录
+3.接口HOST项目web.config配置文件按照下面来进行配置
+
+<configuration>
+  
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,log4net" />
+  </configSections>
+
+  <!---log4net日志记录配置-->
+  <log4net>
+    <root>
+      <!--ALL,ERROR,FATAL,INFO,WARN,DEBUG-->
+      <level value="ALL" />
+      <appender-ref ref="FileAppender.WARN" />
+      <appender-ref ref="FileAppender.ERR" />
+      <appender-ref ref="FileAppender.DEBUG" />
+      <appender-ref ref="FileAppender.INFO" />
+    </root>
+    <appender name="FileAppender.WARN" type="log4net.Appender.RollingFileAppender">
+      <param name="Encoding" value="UTF-8" />
+      <file type="log4net.Util.PatternString" value="App_Data/log4net/WARN-%date{yyyy-MM-dd}.log" />
+      <appendToFile value="true" />
+      <rollingStyle value="Date" />
+      <datePattern value="yyyy-MM-dd" />
+      <maxSizeToRollBackups value="10" />
+      <maximumFileSize value="3000kb" />
+      <staticLogFileName value="true" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%d [%t] %-5p %c [%x] %n%m%n" />
+        <conversionPattern value="时  间：%d [%t] %n级  别：%-5p %n关联类：%c [%x] %n%m%n %n" />
+      </layout>
+      <filter type="log4net.Filter.LevelRangeFilter">
+        <levelMin value="WARN" />
+        <levelMax value="WARN" />
+      </filter>
+    </appender>
+    <appender name="FileAppender.DEBUG" type="log4net.Appender.RollingFileAppender">
+      <param name="Encoding" value="UTF-8" />
+      <file type="log4net.Util.PatternString" value="App_Data/log4net/DEBUG-%date{yyyy-MM-dd}.log" />
+      <appendToFile value="true" />
+      <rollingStyle value="Date" />
+      <datePattern value="yyyy-MM-dd" />
+      <maxSizeToRollBackups value="10" />
+      <maximumFileSize value="3000kb" />
+      <staticLogFileName value="true" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%d [%t] %-5p %c [%x] %n%m%n" />
+        <conversionPattern value="时  间：%d [%t] %n级  别：%-5p %n关联类：%c [%x] %n%m%n %n" />
+      </layout>
+      <filter type="log4net.Filter.LevelRangeFilter">
+        <levelMin value="DEBUG" />
+        <levelMax value="DEBUG" />
+      </filter>
+    </appender>
+    <appender name="FileAppender.INFO" type="log4net.Appender.RollingFileAppender">
+      <param name="Encoding" value="UTF-8" />
+      <file type="log4net.Util.PatternString" value="App_Data/log4net/INFO-%date{yyyy-MM-dd}.log" />
+      <appendToFile value="true" />
+      <rollingStyle value="Date" />
+      <datePattern value="yyyy-MM-dd" />
+      <maxSizeToRollBackups value="10" />
+      <maximumFileSize value="3000kb" />
+      <staticLogFileName value="true" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%d [%t] %-5p %c [%x] %n%m%n" />
+        <conversionPattern value="时  间：%d [%t] %n级  别：%-5p %n关联类：%c [%x] %n%m%n %n" />
+      </layout>
+      <filter type="log4net.Filter.LevelRangeFilter">
+        <levelMin value="INFO" />
+        <levelMax value="INFO" />
+      </filter>
+    </appender>
+    <appender name="FileAppender.ERR" type="log4net.Appender.RollingFileAppender">
+      <param name="Encoding" value="UTF-8" />
+      <file type="log4net.Util.PatternString" value="App_Data/log4net/ERR-%date{yyyy-MM-dd}.log" />
+      <appendToFile value="true" />
+      <rollingStyle value="Date" />
+      <datePattern value="yyyy-MM-dd" />
+      <maxSizeToRollBackups value="10" />
+      <maximumFileSize value="3000kb" />
+      <staticLogFileName value="true" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%d [%t] %-5p %c [%x] %n%m%n" />
+        <conversionPattern value="异常时间：%d [%t] %n异常级别：%-5p %n异 常 类：%c [%x] %n%m%n %n" />
+      </layout>
+      <filter type="log4net.Filter.LevelRangeFilter">
+        <levelMin value="ERROR" />
+        <levelMax value="FATAL" />
+      </filter>
+    </appender>
+  </log4net>
+
+</configuration>

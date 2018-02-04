@@ -1,0 +1,150 @@
+﻿/* ****************************************************************
+ * SharpSword zhangliang@sharpsword.com.cn 9/7/2016 11:25:19 AM
+ * ****************************************************************/
+using SharpSword.Environments;
+using SharpSword.ViewEngine;
+using SharpSword.WebApi;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Web;
+
+namespace SharpSword.DynamicApi
+{
+    /// <summary>
+    /// 启动的时候先预热下，将所有合法的待生成的API的方法查找下
+    /// </summary>
+    public class StartUp : IStartUp
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly IDynamicApiSelector _dynamicApiSelector;
+        private readonly IMediaTypeFormatterFactory _mediaTypeFormatterFactory;
+        private readonly ILogger _logger;
+        private readonly IActionSelector _actionSelector;
+        private readonly ITypeFinder _typeFinder;
+        private readonly IMachineNameProvider _machineNameProvider;
+        private readonly IResourceFinderManager _resourceFinderManager;
+        private readonly DynamicApiConfig _dynamicApiConfig;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dynamicApiSelector">动态接口方法查找器</param>
+        /// <param name="mediaTypeFormatterFactory">内容输出格式化创建器</param>
+        /// <param name="actionSelector">API接口查找器</param>
+        /// <param name="typeFinder">类型查找器</param>
+        /// <param name="logger">日志记录器</param>
+        /// <param name="machineNameProvider">当前实例信息提供器</param>
+        /// <param name="resourceFinderManager">资源查找器</param>
+        /// <param name="viewEngineManager">视图引擎管理器</param>
+        /// <param name="dynamicApiConfig">动态API接口配置信息</param>
+        public StartUp(
+            IDynamicApiSelector dynamicApiSelector,
+            IMediaTypeFormatterFactory mediaTypeFormatterFactory,
+            IActionSelector actionSelector,
+            ITypeFinder typeFinder,
+            ILogger<StartUp> logger,
+            IMachineNameProvider machineNameProvider,
+            IResourceFinderManager resourceFinderManager,
+            IViewEngineManager viewEngineManager,
+            DynamicApiConfig dynamicApiConfig)
+        {
+            this._dynamicApiSelector = dynamicApiSelector;
+            this._mediaTypeFormatterFactory = mediaTypeFormatterFactory;
+            this._actionSelector = actionSelector;
+            this._typeFinder = typeFinder;
+            this._logger = logger ?? GenericNullLogger<StartUp>.Instance;
+            this._machineNameProvider = machineNameProvider;
+            this._resourceFinderManager = resourceFinderManager;
+            this._dynamicApiConfig = dynamicApiConfig;
+        }
+
+        /// <summary>
+        /// 初始化(整个什么周期只执行一次，在IOC容器注册完成后进行)
+        /// </summary>
+        public void Init()
+        {
+            try
+            {
+                //原始请求参数
+                var requestParams = new RequestParams()
+                {
+                    ActionName = "DynamicApi.Collection",
+                    Data = "{}",
+                    Format = "View"
+                };
+
+                //接口描述对象
+                var actionDescriptor = new ReflectedActionDescriptor(typeof(CollectionAction)).GetActionDescriptor();
+
+                //构造请求上下文
+                var requestContext = new RequestContext(
+                            httpContext: new HttpContextWrapper(HttpContext.Current),
+                            systemOptions: SystemOptionsManager.Current,
+                            requestDto: new NullRequestDto(),
+                            actionDescriptor: actionDescriptor,
+                            rawRequestParams: requestParams,
+                            decryptedRequestParams: requestParams.MapTo<RequestParams>());
+
+                //创建出生成动态API接口实例
+                var collectionAction = new CollectionAction(this._dynamicApiSelector,
+                                                            this._mediaTypeFormatterFactory,
+                                                            this._actionSelector,
+                                                            this._typeFinder,
+                                                            this._dynamicApiConfig,
+                                                            this._machineNameProvider);
+                collectionAction.ActionDescriptor = actionDescriptor;
+                collectionAction.RequestContext = requestContext;
+                collectionAction.Logger = this._logger;
+                ((IAction)collectionAction).RequestDto = requestContext.RequestDto;
+
+                //执行返回结果
+                var result = collectionAction.Execute();
+
+                //执行结果出来方法上下文构造
+                var actionExecutedContext = new ActionExecutedContext(collectionAction, new ActionResult()
+                {
+                    Flag = result.Flag,
+                    Info = result.Info,
+                    Data = result.Data
+                });
+
+                //获取OnActionExecuted方法，业务系统框架里定义成了收保护的方法，因此需要使用反射的方式执行
+                var methodInfo = collectionAction.GetType()
+                    .GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+                    .FirstOrDefault(x => !x.IsSpecialName && x.Name == "OnActionExecuted");
+
+                //执行方法
+                // m.Invoke(collectionAction, new object[] { actionExecutedContext });
+                this.Execute(methodInfo)(collectionAction, actionExecutedContext);
+            }
+            //扩展，不属于核心流程，所以此流程出错，对整个框架来说不构成影响，因此我们只记录下错误日志
+            catch (Exception exc)
+            {
+                this._logger.Error(exc);
+            }
+        }
+
+        /// <summary>
+        /// 这里我们使用表达式树的方式来执行接口方法，来加快执行速度
+        /// 生成表达式树:(action, actionExecutedContext) => action.OnActionExecuted(actionExecutedContext)
+        /// </summary>
+        /// <param name="methodInfo">待执行的方法信息</param>
+        /// <returns>动态创建的表达式树对应的委托</returns>
+        private Action<CollectionAction, ActionExecutedContext> Execute(MethodInfo methodInfo)
+        {
+            var target = Expression.Parameter(typeof(CollectionAction), "action");
+            var argParam = Expression.Parameter(typeof(ActionExecutedContext), "actionExecutedContext");
+            var callMethodInvoker = Expression.Call(target, methodInfo, argParam);
+            return Expression.Lambda<Action<CollectionAction, ActionExecutedContext>>(callMethodInvoker, target, argParam).Compile();
+        }
+
+        /// <summary>
+        /// 设置启动次序
+        /// </summary>
+        public int Priority { get { return 0; } }
+    }
+}
