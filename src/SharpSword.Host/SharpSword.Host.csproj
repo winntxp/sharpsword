@@ -210,8 +210,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apis\AopAction.cs" />
     <Compile Include="Apis\MSMQ.cs" />
     <Compile Include="Apis\MyAPI.cs" />
+    <Compile Include="Apis\OrmTestAction.cs" />
     <Compile Include="Apis\RedisLocker.cs" />
     <Compile Include="Apis\SDKTest.cs" />
     <Compile Include="Controllers\AliPayController.cs" />
